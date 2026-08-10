@@ -14,8 +14,27 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.project-detail img').forEach((img) => {
-  img.addEventListener('click', () => openLightbox(img.src, img.alt));
+const galleries = document.querySelectorAll('.project-detail');
+
+galleries.forEach((gallery) => {
+  const displayImage = gallery.querySelector('.project-detail-display img');
+  const thumbnails = gallery.querySelectorAll('.project-detail-thumb');
+
+  thumbnails.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      thumbnails.forEach((button) => {
+        button.classList.remove('active');
+        button.setAttribute('aria-selected', 'false');
+      });
+
+      thumb.classList.add('active');
+      thumb.setAttribute('aria-selected', 'true');
+      displayImage.src = thumb.dataset.src;
+      displayImage.alt = thumb.dataset.alt;
+    });
+  });
+
+  displayImage.addEventListener('click', () => openLightbox(displayImage.src, displayImage.alt));
 });
 
 closeButton.addEventListener('click', closeLightbox);
