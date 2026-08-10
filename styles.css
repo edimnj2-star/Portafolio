@@ -330,6 +330,23 @@ img {
   max-width: 720px;
 }
 
+.about {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-image-wrap {
+  width: 50%;
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .about h2,
 .contact h2 {
   margin-bottom: 10px;
