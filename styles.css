@@ -138,13 +138,11 @@ img {
     right: auto;
   }
 
-  .cover-image-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-  position: absolute;
-  inset: 0;
+.cover-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
   background: transparent;
   transition: background-color 0.2s ease;
 }
