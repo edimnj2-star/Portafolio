@@ -216,6 +216,7 @@ img {
   height: auto;
   object-fit: cover;
   border-radius: 16px;
+  cursor: zoom-in;
 }
 
 @media (min-width: 860px) {
@@ -323,4 +324,40 @@ img {
   .project-cover {
     min-height: 293px;
   }
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 24px;
+  z-index: 1000;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 95%;
+  max-height: 95%;
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  font-size: 26px;
+  cursor: pointer;
 }
