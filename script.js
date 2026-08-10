@@ -1,47 +1,61 @@
-const lightbox = document.querySelector('.lightbox-overlay');
-const lightboxImage = lightbox.querySelector('img');
-const closeButton = lightbox.querySelector('.lightbox-close');
+const modals = document.querySelectorAll('.project-modal');
+const openers = document.querySelectorAll('.project-cover[href^="#detail-pz-"]');
+const closeButtons = document.querySelectorAll('.modal-close');
 
-function openLightbox(src, alt) {
-  lightboxImage.src = src;
-  lightboxImage.alt = alt;
-  lightbox.classList.add('active');
+function openModal(modal) {
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }
 
-function closeLightbox() {
-  lightbox.classList.remove('active');
+function closeModal(modal) {
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
 
-const galleries = document.querySelectorAll('.project-detail');
+openers.forEach((opener) => {
+  const targetId = opener.getAttribute('href').substring(1);
+  const modal = document.getElementById(targetId);
 
-galleries.forEach((gallery) => {
-  const displayImage = gallery.querySelector('.project-detail-display img');
-  const thumbnails = gallery.querySelectorAll('.project-detail-thumb');
+  if (!modal) return;
 
-  thumbnails.forEach((thumb) => {
-    thumb.addEventListener('click', () => {
-      thumbnails.forEach((button) => {
-        button.classList.remove('active');
-        button.setAttribute('aria-selected', 'false');
-      });
-
-      thumb.classList.add('active');
-      thumb.setAttribute('aria-selected', 'true');
-      displayImage.src = thumb.dataset.src;
-      displayImage.alt = thumb.dataset.alt;
-    });
+  opener.addEventListener('click', (event) => {
+    event.preventDefault();
+    openModal(modal);
   });
-
-  displayImage.addEventListener('click', () => openLightbox(displayImage.src, displayImage.alt));
 });
 
-closeButton.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', (event) => {
-  if (event.target === lightbox) closeLightbox();
+closeButtons.forEach((button) => {
+  const modal = button.closest('.project-modal');
+  button.addEventListener('click', () => closeModal(modal));
+});
+
+modals.forEach((modal) => {
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
 });
 
 window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeLightbox();
+  if (event.key === 'Escape') {
+    modals.forEach((modal) => {
+      if (modal.classList.contains('active')) {
+        closeModal(modal);
+      }
+    });
+  }
 });
+
+if (typeof lightGallery !== 'undefined') {
+  document.querySelectorAll('.project-gallery').forEach((gallery) => {
+    lightGallery(gallery, {
+      plugins: [lgZoom, lgThumbnail],
+      speed: 500,
+      download: false,
+      selector: 'a',
+    });
+  });
+}

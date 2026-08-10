@@ -205,18 +205,68 @@ img {
   background: var(--overlay);
 }
 
-.project-detail {
-  display: grid;
-  gap: 24px;
-  padding: 40px 0;
+.project-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 24px;
+  z-index: 1000;
 }
 
-.project-detail-display img {
+.project-modal.active {
+  display: flex;
+}
+
+.project-modal-content {
+  position: relative;
+  width: min(1100px, 100%);
+  max-height: 95vh;
+  overflow: hidden;
+  background: #111;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.project-gallery {
+  display: grid;
+  gap: 16px;
+}
+
+.project-gallery a {
+  display: block;
+}
+
+.project-gallery img {
   width: 100%;
   height: auto;
-  object-fit: cover;
   border-radius: 16px;
-  cursor: zoom-in;
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media (max-width: 860px) {
+  .project-modal-content {
+    width: 100%;
+    max-height: 90vh;
+    padding: 16px;
+  }
 }
 
 .project-detail-thumbs {
