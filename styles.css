@@ -1,0 +1,307 @@
+:root {
+  --text: #191919;
+  --muted: #999999;
+  --line: #f2f2f2;
+  --overlay: rgba(25, 25, 25, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.site-wrap {
+  padding: 0 2%;
+}
+
+.site-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  border-bottom: 5px solid var(--line);
+  padding: 30px 0;
+}
+
+.nav-container {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.nav-container a,
+.social a {
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.nav-container a:hover,
+.nav-container a.active,
+.social a:hover {
+  color: var(--text);
+}
+
+.logo-wrap {
+  flex: 1;
+  text-align: center;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.social {
+  flex: 1;
+  text-align: right;
+}
+
+.social ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.masthead {
+  text-align: center;
+  padding: 110px 0 100px;
+}
+
+.masthead-contents {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.masthead h1 {
+  margin: 0 0 15px;
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+}
+
+.masthead p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--muted);
+}
+
+.project-covers {
+  display: grid;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.project-cover {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 450px;
+  background: #f8f8f8;
+}
+
+.project-cover:nth-child(2n) .details-wrap {
+  left: 0;
+  right: auto;
+}
+
+.cover-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cover-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.cover-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  padding: 0;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+  transition: background 0.2s ease;
+}
+
+.details-inner {
+  text-align: center;
+  padding: 6% 8%;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-cover:hover .details {
+  background: var(--text);
+}
+
+.project-cover:hover .title,
+.project-cover:hover .date {
+  color: #ffffff;
+}
+
+.project-cover:hover .cover-image-wrap::after {
+  background: var(--overlay);
+}
+
+.about,
+.contact {
+  padding: 72px 0 32px;
+  max-width: 720px;
+}
+
+.about h2,
+.contact h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.about p,
+.contact p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.contact a {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.site-footer {
+  padding: 64px 0 40px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 932px) {
+  .site-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .nav-container {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .logo-wrap {
+    order: 2;
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .social {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+
+  .social ul {
+    justify-content: center;
+  }
+
+  .masthead {
+    padding: 64px 0 56px;
+  }
+
+  .masthead h1 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  .masthead p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .project-cover {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-wrap {
+    padding: 0 20px;
+  }
+
+  .details-wrap {
+    width: 100%;
+    height: auto;
+    top: auto;
+    bottom: 0;
+  }
+
+  .details {
+    min-height: 120px;
+  }
+
+  .project-cover {
+    min-height: 293px;
+  }
+}
