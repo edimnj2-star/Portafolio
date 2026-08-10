@@ -240,20 +240,27 @@ img {
 .project-gallery {
   display: grid;
   gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
 }
 
 .project-gallery a {
   display: block;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
 .project-gallery img {
   width: 100%;
-  height: auto;
-  border-radius: 16px;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
   display: block;
+  transition: transform 0.25s ease;
 }
 
-.modal-close {
+.project-gallery a:hover img {
+  transform: scale(1.03);
   position: absolute;
   top: 16px;
   right: 16px;
