@@ -122,15 +122,16 @@ img {
   display: grid;
   gap: 20px;
   padding-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .project-cover {
   position: relative;
   display: block;
   overflow: hidden;
-    min-height: 350px;
-    background: #f8f8f8;
-  }
+  min-height: 350px;
+  background: #f8f8f8;
+}
 
   .project-cover:nth-child(2n) .details-wrap {
     left: 0;
@@ -258,18 +259,22 @@ img {
 
 .project-gallery a:hover img {
   transform: scale(1.03);
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 44px;
-  height: 44px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  color: #111;
-  font-size: 26px;
-  cursor: pointer;
-  z-index: 1;
+}
+
+.project-detail-page {
+  display: grid;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 860px) {
@@ -277,6 +282,15 @@ img {
     width: 100%;
     max-height: 90vh;
     padding: 16px;
+  }
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-gallery img {
+    aspect-ratio: auto;
+    height: auto;
   }
 }
 
@@ -373,7 +387,7 @@ img {
   text-align: center;
 }
 
-@media (max-width: 932px) {
+@media (max-width: 1024px) {
   .site-header {
     flex-wrap: wrap;
     height: auto;
@@ -384,6 +398,8 @@ img {
     order: 1;
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .logo-wrap {
@@ -407,13 +423,13 @@ img {
   }
 
   .masthead h1 {
-    font-size: 28px;
-    line-height: 28px;
+    font-size: 34px;
+    line-height: 40px;
   }
 
   .masthead p {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .project-cover {
@@ -421,9 +437,9 @@ img {
   }
 }
 
-@media (max-width: 640px) {
-  .site-wrap {
-    padding: 0 20px;
+@media (max-width: 768px) {
+  .project-covers {
+    grid-template-columns: 1fr;
   }
 
   .details-wrap {
@@ -437,8 +453,69 @@ img {
     min-height: 120px;
   }
 
+  .about {
+    padding: 48px 0 16px;
+  }
+
+  .about-image-wrap {
+    width: 70%;
+  }
+
+  .masthead h1 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .masthead p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-wrap {
+    padding: 0 20px;
+  }
+
+  .site-header {
+    padding: 16px 0;
+  }
+
+  .nav-container {
+    gap: 10px;
+  }
+
+  .masthead {
+    padding: 48px 0 40px;
+  }
+
+  .masthead h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .masthead p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
   .project-cover {
-    min-height: 293px;
+    min-height: 260px;
+  }
+
+  .about-image-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about,
+  .contact {
+    padding: 32px 0;
+  }
+
+  .about h2,
+  .contact h2 {
+    font-size: 24px;
   }
 }
 
